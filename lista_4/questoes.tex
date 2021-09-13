@@ -1,0 +1,395 @@
+\documentclass[12pt]{article}                                                                                                                       
+\usepackage{sbc-template}                                                 
+\usepackage{graphicx,url}                                                 
+\usepackage[utf8]{inputenc}                                               
+\usepackage[brazil]{babel}                                                      
+\usepackage{graphicx}
+
+
+\title{Lista 4\\ Inteligência Artificial}
+\author{Iyan Lucas Duarte Marques\inst{1}, Samir do Morim Cambraia\inst{1}, Wesley Filemon\inst{1}}
+
+\address{Instituto de Ciências Exatas e Informática - Pontifícia Universidade Católica Minas Gerais (PUC-MG)}
+
+\begin{document}
+
+\maketitle
+
+\section{Questão 01\\
+  A partir da base de dados PãoeManteiga Sim.csvdisponível no CANVAS, pede-se:
+ }
+\begin{table}[h]
+	\begin{center}
+
+		\begin{tabular}{| l | l |}
+			\hline
+			\textbf{Produto} & \textbf{Suporte} \\ \hline
+			Leite            & $2/10=0.2$       \\ \hline
+			Café             & $3/10=0.3$       \\ \hline
+			Cerveja          & $2/10=0.2$       \\ \hline
+			Pão              & $5/10=0.5$       \\ \hline
+			Manteiga         & $5/10=0.5$       \\ \hline
+			Arroz            & $2/10=0.2$       \\ \hline
+			Feijão           & $2/10=0.2$       \\ \hline
+		\end{tabular}
+		\caption{\label{tab:itemset1.1}Itemset = 1}
+	\end{center}
+\end{table}
+
+\begin{table}[h]
+	\begin{center}
+
+		\begin{tabular}{| l | l |}
+			\hline
+			\textbf{Produto} & \textbf{Suporte} \\ \hline
+			Café e Pão       & $3/10=0.3$       \\ \hline
+			Café e Manteiga  & $3/10=0.3$       \\ \hline
+			Pão e Manteiga   & $4/10=0.4$       \\ \hline
+		\end{tabular}
+		\caption{\label{tab:itemset1.2}Itemset = 2}
+	\end{center}
+\end{table}
+
+\begin{table}[h]
+	\begin{center}
+
+		\begin{tabular}{| l | l |}
+			\hline
+			\textbf{Produto}     & \textbf{Suporte} \\ \hline
+			Café, Pão e Manteiga & $3/10=0.3$       \\ \hline
+		\end{tabular}
+		\caption{\label{tab:itemset1.3}Itemset = 3}
+	\end{center}
+\end{table}
+\subsection{Encontre os itensSetse as regras de associação do problema, utilizando-se o algoritmo APRIORI}
+
+\begin{itemize}
+	\item \textbf{\textit{[Café, Pão]}}
+	      \begin{itemize}
+		      \item Se Café → Pão	Confiança= 3/3 = 1
+		      \item Se Pão  → Café	Confiança= 3/5 = 0.6
+	      \end{itemize}
+	\item \textbf{\textit{[Café, Manteiga]}}
+	      \begin{itemize}
+		      \item Se Café → Manteiga     Confiança= 3/3 = 1
+		      \item Se Manteiga → Café	 Confiança= 3/5 = 0.6
+	      \end{itemize}
+	\item  \textbf{\textit{[Pão, Manteiga]}}
+	      \begin{itemize}
+		      \item Se Pão → Manteiga	  Confiança= 4/5 = 0.8
+		      \item Se Manteiga → Pão	  Confiança= 4/5 = 0.8
+	      \end{itemize}
+	\item \textbf{\textit{[Café, Pão e Manteiga]}}
+	      \begin{itemize}
+		      \item Se Café e Pão → Manteiga	Confiança = 3/3 = 1
+		      \item Se café e manteiga → Pão	Confiança = 3/3 = 1
+		      \item Se Pão e Manteiga → Pão	Confiança = 3/4 = 0,75
+		      \item Se Café → Pão e Manteiga	Confiança = 3/3 = 1
+		      \item Se Pão → Café e Manteiga	Confiança = 3/5 = 0.6
+		      \item Se Manteiga → Café e Pão 	Confiança = 3/5 = 0.6
+	      \end{itemize}
+
+
+\end{itemize}
+\subsection{Rode a base de dados no WEKA (ou qualquer ferramenta que você esteja trabalhando), habilite o parâmetro para exibir os ItensSets e verifique se o que você encontrou no item 1 está correto. Utilize os mesmos valores de suporte = 0.3 e confiança de 0.8}
+Ao todo foram encontrados 12 tipos de regras em relação a quem levou café e manteiga temos a regra se café → manteiga vai mostrar que todas as pessoas que levaram café também levou manteiga mas apenas 0.6 dos que levaram manteiga levaram café.
+Já em pão e manteiga ambos tiveram o mesmo resultado aqueles que levaram pão e manteiga e manteiga e pão tiveram o resultado de 0.8.
+Em relação aos três, nos temos que quem levou café e pão também levou manteiga, quem levou café e manteiga também levou pão, e se levou café também levou pão e manteiga, agora quem levou pão e manteiga também levou pão tiveram o resultado de 0,75.
+E quem levou pão também levou café e manteiga teve o resultado de 0.6, e quem levou manteiga e também levou café e pão também teve o resultado de 0,6.
+
+\section{Questão 02\\
+  A partir da base de dados PãoeManteigaSimNao.csv disponível no CANVAS, pede-se:
+ }
+\subsection{Realize os mesmos procedimentos da questão anterior e discuta sobre a quantidade de regras encontradas e sobre o tipo de regras}
+\begin{table}[h]
+	\begin{center}
+
+		\begin{tabular}{| l | l |}
+			\hline
+			\textbf{Produto} & \textbf{Suporte} \\ \hline
+			Leite            & $2/10=0.2$       \\ \hline
+			Café             & $3/10=0.3$       \\ \hline
+			Cerveja          & $2/10=0.2$       \\ \hline
+			Pão              & $5/10=0.5$       \\ \hline
+			Manteiga         & $5/10=0.5$       \\ \hline
+			Arroz            & $2/10=0.2$       \\ \hline
+			Feijão           & $2/10=0.2$       \\ \hline
+		\end{tabular}
+		\caption{\label{tab:itemset1.1}Itemset = 1}
+	\end{center}
+\end{table}
+
+\begin{table}[h]
+	\begin{center}
+
+		\begin{tabular}{| l | l |}
+			\hline
+			\textbf{Produto} & \textbf{Suporte} \\ \hline
+			Café e Pão       & $3/10=0.3$       \\ \hline
+			Café e Manteiga  & $3/10=0.3$       \\ \hline
+			Pão e Manteiga   & $4/10=0.4$       \\ \hline
+		\end{tabular}
+		\caption{\label{tab:itemset1.2}Itemset = 2}
+	\end{center}
+\end{table}
+
+\begin{table}[h]
+	\begin{center}
+
+		\begin{tabular}{| l | l |}
+			\hline
+			\textbf{Produto}     & \textbf{Suporte} \\ \hline
+			Café, Pão e Manteiga & $3/10=0.3$       \\ \hline
+		\end{tabular}
+		\caption{\label{tab:itemset1.3}Itemset = 3}
+	\end{center}
+\end{table}
+
+\begin{itemize}
+	\item \textbf{\textit{[Café, Pão]}}
+	      \begin{itemize}
+		      \item Se Café → Pão	Confiança= 3/3 = 1
+		      \item Se Pão  → Café	Confiança= 3/5 = 0.6
+	      \end{itemize}
+	\item \textbf{\textit{[Café, Manteiga]}}
+	      \begin{itemize}
+		      \item Se Café → Manteiga     Confiança= 3/3 = 1
+		      \item Se Manteiga → Café	 Confiança= 3/5 = 0.6
+	      \end{itemize}
+	\item  \textbf{\textit{[Pão, Manteiga]}}
+	      \begin{itemize}
+		      \item Se Pão → Manteiga	  Confiança= 4/5 = 0.8
+		      \item Se Manteiga → Pão	  Confiança= 4/5 = 0.8
+	      \end{itemize}
+	\item \textbf{\textit{[Café, Pão e Manteiga]}}
+	      \begin{itemize}
+		      \item Se Café e Pão → Manteiga	Confiança = 3/3 = 1
+		      \item Se café e manteiga → Pão	Confiança = 3/3 = 1
+		      \item Se Pão e Manteiga → Pão	Confiança = 3/4 = 0,75
+		      \item Se Café → Pão e Manteiga	Confiança = 3/3 = 1
+		      \item Se Pão → Café e Manteiga	Confiança = 3/5 = 0.6
+		      \item Se Manteiga → Café e Pão 	Confiança = 3/5 = 0.6
+	      \end{itemize}
+
+
+\end{itemize}
+
+Ao todo foram encontrados 12 tipos de regras em relação a quem levou café e manteiga temos a regra se café → manteiga vai mostrar que todas as pessoas que levaram café também levou manteiga mas apenas 0.6 dos que levaram manteiga levaram café.
+Já em pão e manteiga ambos tiveram o mesmo resultado aqueles que levaram pão e manteiga e manteiga e pão tiveram o resultado de 0.8.
+Em relação aos três, nos temos que quem levou café e pão também levou manteiga, quem levou café e manteiga também levou pão, e se levou café também levou pão e manteiga, agora quem levou pão e manteiga também levou pão tiveram o resultado de 0,75.
+E quem levou pão também levou café e manteiga teve o resultado de 0.6, e quem levou manteiga e também levou café e pão também teve o resultado de 0,6.
+
+
+\section{Questão 03\\
+  Considere a seguinte tabela:
+ }
+
+\subsection{Crie um arquivo arff ou CSV com esta tabela}
+Vide anexo: questao3.csv.
+
+\subsection{Com o método APRIORI, com os demais parâmetros default, na ferramenta Weka, descubra 15 regras}
+Apriori
+=======
+
+Minimum support: 0.55 (6 instances)
+Minimum metric <confidence>: 0.9
+Number of cycles performed: 9
+
+Generated sets of large itemsets:
+
+Size of set of large itemsets L(1): 8
+
+Size of set of large itemsets L(2): 13
+
+Size of set of large itemsets L(3): 5
+
+Best rules found:
+
+1. Banana=Sim 7 ==>  Shampoo=Sim 7    <conf:(1)> lift:(1.22) lev:(0.12) [1] conv:(1.27)\\
+2. Banana=Sim 7 ==>  Protetor solar=Não 7    <conf:(1)> lift:(1.22) lev:(0.12) [1] conv:(1.27)\\
+3.  Pasta de dente=Não 7 ==>  Protetor solar=Não 7    <conf:(1)> lift:(1.22) lev:(0.12) [1] conv:(1.27)\\
+4.  Creme para mãos=Não 7 ==>  Protetor solar=Não 7    <conf:(1)> lift:(1.22) lev:(0.12) [1] conv:(1.27)\\
+5. Banana=Sim  Protetor solar=Não 7 ==>  Shampoo=Sim 7    <conf:(1)> lift:(1.22) lev:(0.12) [1] conv:(1.27)\\
+6. Banana=Sim  Shampoo=Sim 7 ==>  Protetor solar=Não 7    <conf:(1)> lift:(1.22) lev:(0.12) [1] conv:(1.27)\\
+7. Banana=Sim 7 ==>  Shampoo=Sim  Protetor solar=Não 7    <conf:(1)> lift:(1.38) lev:(0.17) [1] conv:(1.91)\\
+8.  Ervilha=Sim 6 ==>  Pasta de dente=Não 6    <conf:(1)> lift:(1.57) lev:(0.2) [2] conv:(2.18)\\
+9.  Ervilha=Sim 6 ==>  Protetor solar=Não 6    <conf:(1)> lift:(1.22) lev:(0.1) [1] conv:(1.09)\\
+10.  Pasta de dente=Não  Shampoo=Sim 6 ==>  Protetor solar=Não 6    <conf:(1)> lift:(1.22) lev:(0.1) [1] conv:(1.09)\\
+
+\subsection{Altere a confiança para 0.6 e veja o que ocorre. Registre os resultados dos experimentos.}
+Apriori
+=======
+
+Minimum support: 0.65 (7 instances)
+Minimum metric <confidence>: 0.6
+Number of cycles performed: 7
+
+Generated sets of large itemsets:
+
+Size of set of large itemsets L(1): 7
+
+Size of set of large itemsets L(2): 5
+
+Size of set of large itemsets L(3): 1
+
+Best rules found:
+
+ 1. Banana=Sim 7 ==>  Shampoo=Sim 7    <conf:(1)> lift:(1.22) lev:(0.12) [1] conv:(1.27)\\
+ 2. Banana=Sim 7 ==>  Protetor solar=Não 7    <conf:(1)> lift:(1.22) lev:(0.12) [1] conv:(1.27)\\
+ 3.  Pasta de dente=Não 7 ==>  Protetor solar=Não 7    <conf:(1)> lift:(1.22) lev:(0.12) [1] conv:(1.27)\\
+ 4.  Creme para mãos=Não 7 ==>  Protetor solar=Não 7    <conf:(1)> lift:(1.22) lev:(0.12) [1] conv:(1.27)\\
+ 5. Banana=Sim  Protetor solar=Não 7 ==>  Shampoo=Sim 7    <conf:(1)> lift:(1.22) lev:(0.12) [1] conv:(1.27)\\
+ 6. Banana=Sim  Shampoo=Sim 7 ==>  Protetor solar=Não 7    <conf:(1)> lift:(1.22) lev:(0.12) [1] conv:(1.27)\\
+ 7. Banana=Sim 7 ==>  Shampoo=Sim  Protetor solar=Não 7    <conf:(1)> lift:(1.38) lev:(0.17) [1] conv:(1.91)\\
+ 8.  Protetor solar=Não 9 ==>  Shampoo=Sim 8    <conf:(0.89)> lift:(1.09) lev:(0.06) [0] conv:(0.82)\\
+ 9.  Shampoo=Sim 9 ==>  Protetor solar=Não 8    <conf:(0.89)> lift:(1.09) lev:(0.06) [0] conv:(0.82)\\
+10.  Shampoo=Sim  Protetor solar=Não 8 ==> Banana=Sim 7    <conf:(0.88)> lift:(1.38) lev:(0.17) [1] conv:(1.45)\\
+
+
+\section{Questão 04\\
+  Abra o arquivo iris.arff e execute o algoritmo Apriori.
+ }
+\subsection{Porque ele não está habilitado? }
+Porque o algoritmo só funciona com valores nominais.
+
+\subsection{Discretize então os dados numéricos em 5 grupos (bins) (PreProcess/filters/unsupervised/attribute/discretize). Quantas regras foram encontradas? Analise algumas regras}
+=== Run information ===
+
+Scheme:       weka.associations.Apriori -N 10 -T 0 -C 0.6 -D 0.05 -U 1.0 -M 0.1 -S -1.0 -c -1
+Relation:     iris-weka.filters.unsupervised.attribute.Discretize-B10-M-1.0-Rfirst-last-precision6
+Instances:    150
+Attributes:   5
+              sepallength
+              sepalwidth
+              petallength
+              petalwidth
+              class
+=== Associator model (full training set) ===
+
+
+Apriori
+=======
+
+Minimum support: 0.2 (30 instances)
+Minimum metric <confidence>: 0.6
+Number of cycles performed: 16
+
+Generated sets of large itemsets:
+
+Size of set of large itemsets L(1): 6
+
+Size of set of large itemsets L(2): 3
+
+Size of set of large itemsets L(3): 1
+
+Best rules found:
+
+ 1. petalwidth='(-inf-0.34]' 41 ==> class=Iris-setosa 41    <conf:(1)> lift:(3) lev:(0.18) [27] conv:(27.33)\\
+ 2. petallength='(-inf-1.59]' 37 ==> class=Iris-setosa 37    <conf:(1)> lift:(3) lev:(0.16) [24] conv:(24.67)\\
+ 3. petallength='(-inf-1.59]' petalwidth='(-inf-0.34]' 33 ==> class=Iris-setosa 33    <conf:(1)> lift:(3) lev:(0.15) [22] conv:(22)\\
+ 4. petallength='(-inf-1.59]' 37 ==> petalwidth='(-inf-0.34]' 33    <conf:(0.89)> lift:(3.26) lev:(0.15) [22] conv:(5.38)\\
+ 5. petallength='(-inf-1.59]' class=Iris-setosa 37 ==> petalwidth='(-inf-0.34]' 33    <conf:(0.89)> lift:(3.26) lev:(0.15) [22] conv:(5.38\\)
+ 6. petallength='(-inf-1.59]' 37 ==> petalwidth='(-inf-0.34]' class=Iris-setosa 33    <conf:(0.89)> lift:(3.26) lev:(0.15) [22] conv:(5.38\\)
+ 7. class=Iris-setosa 50 ==> petalwidth='(-inf-0.34]' 41    <conf:(0.82)> lift:(3) lev:(0.18) [27] conv:(3.63)\\
+ 8. petalwidth='(-inf-0.34]' 41 ==> petallength='(-inf-1.59]' 33    <conf:(0.8)> lift:(3.26) lev:(0.15) [22] conv:(3.43)\\
+ 9. petalwidth='(-inf-0.34]' class=Iris-setosa 41 ==> petallength='(-inf-1.59]' 33    <conf:(0.8)> lift:(3.26) lev:(0.15) [22] conv:(3.43)\\
+10. petalwidth='(-inf-0.34]' 41 ==> petallength='(-inf-1.59]' class=Iris-setosa 33    <conf:(0.8)> lift:(3.26) lev:(0.15) [22] conv:(3.43)\\
+
+
+\subsection{Refaça a discretização, agora considerando 3 grupos . Qual o resultado?}
+=== Run information ===
+
+Scheme:       weka.associations.Apriori -N 10 -T 0 -C 0.6 -D 0.05 -U 1.0 -M 0.1 -S -1.0 -c -1
+Relation:     iris-weka.filters.unsupervised.attribute.Discretize-B10-M-1.0-Rfirst-last-precision6
+Instances:    150
+Attributes:   5
+              sepallength
+              sepalwidth
+              petallength
+              petalwidth
+              class
+=== Associator model (full training set) ===
+
+
+Apriori
+=======
+
+Minimum support: 0.2 (30 instances)
+Minimum metric <confidence>: 0.6
+Number of cycles performed: 16
+
+Generated sets of large itemsets:
+
+Size of set of large itemsets L(1): 6
+
+Size of set of large itemsets L(2): 3
+
+Size of set of large itemsets L(3): 1
+
+Best rules found:
+
+ 1. petalwidth='(-inf-0.34]' 41 ==> class=Iris-setosa 41    <conf:(1)> lift:(3) lev:(0.18) [27] conv:(27.33)\\
+ 2. petallength='(-inf-1.59]' 37 ==> class=Iris-setosa 37    <conf:(1)> lift:(3) lev:(0.16) [24] conv:(24.67)\\
+ 3. petallength='(-inf-1.59]' petalwidth='(-inf-0.34]' 33 ==> class=Iris-setosa 33    <conf:(1)> lift:(3) lev:(0.15) [22] conv:(22)\\
+ 4. petallength='(-inf-1.59]' 37 ==> petalwidth='(-inf-0.34]' 33    <conf:(0.89)> lift:(3.26) lev:(0.15) [22] conv:(5.38)\\
+ 5. petallength='(-inf-1.59]' class=Iris-setosa 37 ==> petalwidth='(-inf-0.34]' 33    <conf:(0.89)> lift:(3.26) lev:(0.15) [22] conv:(5.38\\)
+ 6. petallength='(-inf-1.59]' 37 ==> petalwidth='(-inf-0.34]' class=Iris-setosa 33    <conf:(0.89)> lift:(3.26) lev:(0.15) [22] conv:(5.38\\)
+ 7. class=Iris-setosa 50 ==> petalwidth='(-inf-0.34]' 41    <conf:(0.82)> lift:(3) lev:(0.18) [27] conv:(3.63)\\
+ 8. petalwidth='(-inf-0.34]' 41 ==> petallength='(-inf-1.59]' 33    <conf:(0.8)> lift:(3.26) lev:(0.15) [22] conv:(3.43)\\
+ 9. petalwidth='(-inf-0.34]' class=Iris-setosa 41 ==> petallength='(-inf-1.59]' 33    <conf:(0.8)> lift:(3.26) lev:(0.15) [22] conv:(3.43)\\
+10. petalwidth='(-inf-0.34]' 41 ==> petallength='(-inf-1.59]' class=Iris-setosa 33    <conf:(0.8)> lift:(3.26) lev:(0.15) [22] conv:(3.43)\\
+
+
+
+\section{Questão 05\\
+  Considerando a base de dados do WEKA: Supermaket.arf, pede-se:
+ }
+\subsection{Anote os resultados usando o algoritmo APRIORI}
+=== Run information ===
+
+Scheme:       weka.associations.Apriori -N 10 -T 0 -C 0.9 -D 0.05 -U 1.0 -M 0.1 -S -1.0 -c -1
+Relation:     supermarket
+Instances:    4627
+Attributes:   217
+              [list of attributes omitted]
+=== Associator model (full training set) ===
+
+
+Apriori
+=======
+
+Minimum support: 0.15 (694 instances)
+Minimum metric <confidence>: 0.9
+Number of cycles performed: 17
+
+Generated sets of large itemsets:
+
+Size of set of large itemsets L(1): 44
+
+Size of set of large itemsets L(2): 380
+
+Size of set of large itemsets L(3): 910
+
+Size of set of large itemsets L(4): 633
+
+Size of set of large itemsets L(5): 105
+
+Size of set of large itemsets L(6): 1
+
+\subsection{Analise as regras. Veja o que você acha sobre elas e o que você pode fazer para melhorá-las}
+Best rules found:
+
+ 1. biscuits=t frozen foods=t fruit=t total=high 788 ==> bread and cake=t 723    <conf:(0.92)> lift:(1.27) lev:(0.03) [155] conv:(3.35)\\
+ 2. baking needs=t biscuits=t fruit=t total=high 760 ==> bread and cake=t 696    <conf:(0.92)> lift:(1.27) lev:(0.03) [149] conv:(3.28)\\
+ 3. baking needs=t frozen foods=t fruit=t total=high 770 ==> bread and cake=t 705    <conf:(0.92)> lift:(1.27) lev:(0.03) [150] conv:(3.27)\\
+ 4. biscuits=t fruit=t vegetables=t total=high 815 ==> bread and cake=t 746    <conf:(0.92)> lift:(1.27) lev:(0.03) [159] conv:(3.26)\\
+ 5. party snack foods=t fruit=t total=high 854 ==> bread and cake=t 779    <conf:(0.91)> lift:(1.27) lev:(0.04) [164] conv:(3.15)\\
+ 6. biscuits=t frozen foods=t vegetables=t total=high 797 ==> bread and cake=t 725    <conf:(0.91)> lift:(1.26) lev:(0.03) [151] conv:(3.06)\\
+ 7. baking needs=t biscuits=t vegetables=t total=high 772 ==> bread and cake=t 701    <conf:(0.91)> lift:(1.26) lev:(0.03) [145] conv:(3.01)\\
+ 8. biscuits=t fruit=t total=high 954 ==> bread and cake=t 866    <conf:(0.91)> lift:(1.26) lev:(0.04) [179] conv:(3)\\
+ 9. frozen foods=t fruit=t vegetables=t total=high 834 ==> bread and cake=t 757    <conf:(0.91)> lift:(1.26) lev:(0.03) [156] conv:(3)\\
+10. frozen foods=t fruit=t total=high 969 ==> bread and cake=t 877    <conf:(0.91)> lift:(1.26) lev:(0.04) [179] conv:(2.92)\\
+
+
+
+\end{document}
