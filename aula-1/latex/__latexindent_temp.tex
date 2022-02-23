@@ -1,0 +1,46 @@
+\documentclass[oneside]{article}            % Imprimir apenas frente
+%\documentclass[doubleside]{diretrizes}        % Imprimir frente e verso
+
+% Importações de pacotes
+\usepackage[alf, abnt-emphasize=bf, recuo=0cm, abnt-etal-cite=2, abnt-etal-list=0]{abntex2cite}  % Citações padrão ABNT
+\usepackage[utf8]{inputenc}                         % Acentuação direta
+\usepackage[T1]{fontenc}                            % Codificação da fonte em 8 bits
+\usepackage{graphicx}                               % Inserir figuras
+\usepackage{amsfonts, amssymb, amsmath}             % Fonte e símbolos matemáticos
+\usepackage{booktabs}                               % Comandos para tabelas
+\usepackage{verbatim}                               % Texto é interpretado como escrito no documento
+\usepackage{multirow, array}                        % Múltiplas linhas e colunas em tabelas
+\usepackage{indentfirst}                            % Endenta o primeiro parágrafo de cada seção.
+\usepackage{microtype}                              % Para melhorias de justificação?
+\usepackage[algoruled, portuguese]{algorithm2e}     % Escrever algoritmos
+\usepackage{float}                                  % Utilizado para criação de floats
+\usepackage{times}                                  % Usa a fonte Times
+\usepackage{lipsum} 
+
+\title{Aula 1}
+\author{Iyan Lucas}
+
+\begin{document}
+    \maketitle
+
+\section{Cobertura de regra}
+
+A cobertura por classe é basicamente a classe e quantas regras ela cobre (como se, de 100 amostras, ela só cobrisse 90), dividida pelo total da classe. 
+
+A cobertura global é basicamente a cobertura de classe mas o divisor é o total de amostras da base.
+
+\section{Matriz de Confusão e Tabela}
+
+\subsection{Recall}
+\begin{equation}
+    \displaystyle\frac{Recall}{Sensibilidade} = \frac{VP}{VP+FN}
+\end{equation}
+\subsection{Precisão}
+
+\begin{equation}
+    Precisão = \frac{VP}{VP+FP}
+\end{equation}
+
+
+
+\end{document}
