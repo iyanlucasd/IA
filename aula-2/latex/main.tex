@@ -1,0 +1,80 @@
+\documentclass[oneside]{article}            % Imprimir apenas frente
+%\documentclass[doubleside]{diretrizes}        % Imprimir frente e verso
+
+% Importações de pacotes
+\usepackage[alf, abnt-emphasize=bf, recuo=0cm, abnt-etal-cite=2, abnt-etal-list=0]{abntex2cite}  % Citações padrão ABNT
+\usepackage[utf8]{inputenc}                         % Acentuação direta
+\usepackage[T1]{fontenc}                            % Codificação da fonte em 8 bits
+\usepackage{graphicx}                               % Inserir figuras
+\usepackage{amsfonts, amssymb, amsmath}             % Fonte e símbolos matemáticos
+\usepackage{booktabs}                               % Comandos para tabelas
+\usepackage{verbatim}                               % Texto é interpretado como escrito no documento
+\usepackage{multirow, array}                        % Múltiplas linhas e colunas em tabelas
+\usepackage{indentfirst}                            % Endenta o primeiro parágrafo de cada seção.
+\usepackage{microtype}                              % Para melhorias de justificação?
+\usepackage[algoruled, portuguese]{algorithm2e}     % Escrever algoritmos
+\usepackage{float}                                  % Utilizado para criação de floats
+\usepackage{times}                                  % Usa a fonte Times
+\usepackage{lipsum} 
+
+\title{Aula 2}
+\author{Iyan Lucas}
+
+\begin{document}
+    \maketitle
+
+    \section{Ganho e Entropia}
+    \begin{eqnarray}
+        ganho(atributo) = \Delta(classe) - \Delta(atributo)
+    \end{eqnarray}\footnote{$\Delta$ é o símbolo da entropia.}
+    A entropia da classe é o resultado da soma da entropia dos seus atributos.
+    Para a entropia dos atributos, serão a negativa fração do atributo vezes o logarítmo deste mesmo atributos, exemplo:
+    Supondo que existem 14 atributos, sendo 9 deles 'True' e 5 deles false
+    \begin{equation}
+        entropia = -(\frac{9}{14}) * \log_2(\frac{9}{14}) - (\frac{5}{14}) * \log_2(\frac{5}{14})
+    \end{equation}
+    Novamente na entropia de classe, precisaremos olhar a correspondência do atributo com a classe.
+    Exemplo, se há uma correspondência do atributo e da classe:
+    \begin{table}[h]
+        \begin{tabular}{|l|l|}
+        \hline
+        Atributo & Classe \\ \hline
+        Y        & Y      \\ \hline
+        Y        & N      \\ \hline
+        N        & N      \\ \hline
+        N        & Y      \\ \hline
+        Y        & Y      \\ \hline
+        N        & Y      \\ \hline
+        \end{tabular}
+        \end{table}
+        \begin{equation}
+            entropia = Y(\frac{3}{6}*\Delta(\frac{2}{3}, \frac{1}{2})) + N(\frac{3}{6}*\Delta(\frac{1}{3}, \frac{2}{3}))
+        \end{equation}
+    \section{ID3 x J48(C45)}
+    \begin{itemize}
+        \item A poda
+        \item Equação Diferente
+        \item o ID3 só trabalha com atributos nominais e o C45 só com numéricos
+        \item o ID3 não aceita dados auzentes
+    \end{itemize}
+    \section{Exercícios}
+    \begin{table}[h]
+        \begin{tabular}{l|l|l|l|}
+        \cline{2-4}
+                                & A  & B  & C  \\ \hline
+        \multicolumn{1}{|l|}{A} & 10 & 0  & 0  \\ \hline
+        \multicolumn{1}{|l|}{B} & 15 & 10 & 5  \\ \hline
+        \multicolumn{1}{|l|}{C} & 5  & 0  & 30 \\ \hline
+        \end{tabular}
+        \end{table}
+
+        \begin{table}[h]
+            \begin{tabular}{l|l|l|l|l|l|l|}
+            \cline{2-7}
+                                    & TVP & TFN & TFP & TVN & Precision & Recall \\ \hline
+            \multicolumn{1}{|l|}{A} &     &     &     &     &           &        \\ \hline
+            \multicolumn{1}{|l|}{B} &     &     &     &     &           &        \\ \hline
+            \multicolumn{1}{|l|}{C} &     &     &     &     &           &        \\ \hline
+            \end{tabular}
+            \end{table}
+\end{document}
