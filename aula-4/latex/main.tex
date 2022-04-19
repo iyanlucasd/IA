@@ -17,29 +17,20 @@
 \usepackage{times}                                  % Usa a fonte Times
 \usepackage{lipsum} 
 
-\title{Aula 1}
+\title{Aula 4}
 \author{Iyan Lucas}
 
 \begin{document}
-    \maketitle
-
-\section{Cobertura de regra}
-
-A cobertura por classe é basicamente a classe e quantas regras ela cobre (como se, de 100 amostras, ela só cobrisse 90), dividida pelo total da classe. 
-
-A cobertura global é basicamente a cobertura de classe mas o divisor é o total de amostras da base.
-
-\section{Matriz de Confusão e Tabela}
-
-\subsection{Recall}
-\begin{equation}
-    \displaystyle\frac{Recall}{Sensibilidade} = \frac{VP}{VP+FN}
-\end{equation}
-\subsection{Precisão}
-
-\begin{equation}
-    Precisão = \frac{VP}{VP+FP}
-\end{equation}
+\maketitle
+\section{Técnicas de Amostragem}
+\subsection{Cross Validation}
+O método de validação (o melhor método de validação) vai dividir o seu conjunto em x partes (folds).
+E ele usa 9 dobras para treinar o modelo, e uma para validar o modelo. 
+E as métricas de precisão e recall serão as médias dos valores das 10 dobras.
+\subsection{Random Forest}
+Da classe ensamble que ela foca em combinar classificadores.
+Ela gera varias arvores e combina por voto majoritario, e valida pelo método bootstrap.
+O bootstrap ele pega x exemplos de uma base (que podem ser repetidos) e valida com os exemplos que ele não validou.
 
 
 

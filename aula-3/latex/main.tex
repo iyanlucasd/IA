@@ -17,30 +17,19 @@
 \usepackage{times}                                  % Usa a fonte Times
 \usepackage{lipsum} 
 
-\title{Aula 1}
+\title{Aula 3}
 \author{Iyan Lucas}
 
 \begin{document}
-    \maketitle
+\maketitle
+\section{Pré-processamento}
+\subsection{Balanceamento}
+Quando há muito mais atributos de uma classe do que o outro, como se tivesse 100x a mais de um atributo X do que do Y.
+Para saber se a base está desbalanceada, veja o recall e a precisão.
 
-\section{Cobertura de regra}
-
-A cobertura por classe é basicamente a classe e quantas regras ela cobre (como se, de 100 amostras, ela só cobrisse 90), dividida pelo total da classe. 
-
-A cobertura global é basicamente a cobertura de classe mas o divisor é o total de amostras da base.
-
-\section{Matriz de Confusão e Tabela}
-
-\subsection{Recall}
-\begin{equation}
-    \displaystyle\frac{Recall}{Sensibilidade} = \frac{VP}{VP+FN}
-\end{equation}
-\subsection{Precisão}
-
-\begin{equation}
-    Precisão = \frac{VP}{VP+FP}
-\end{equation}
-
-
+Há formas de corrigir este problema, uma destas formas é redefinir os datasets, que é retirar ou adicionar instância.\footnote{
+    Undersampling ou Oversampling.
+}
+De forma aleatória ou induzida (heurística).
 
 \end{document}
